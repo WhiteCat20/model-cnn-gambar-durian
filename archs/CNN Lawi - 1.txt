@@ -1,0 +1,35 @@
+model = tf.keras.models.Sequential([
+    # Convolution Layer 1
+    tf.keras.layers.Conv2D(16, (3,3), activation='relu', input_shape=(200,200,3)),
+    tf.keras.layers.BatchNormalization(synchronized=True),
+    tf.keras.layers.MaxPool2D(4,4),
+    tf.keras.layers.Dropout(0.25), 
+    # Convolution Layer 2
+    tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
+    tf.keras.layers.BatchNormalization(synchronized=True),
+    tf.keras.layers.MaxPool2D(2,2),
+    tf.keras.layers.Dropout(0.25),  # Add dropout layer
+    # Convolution Layer 3
+    tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
+    tf.keras.layers.BatchNormalization(synchronized=True),
+    tf.keras.layers.MaxPool2D(2,2),
+    tf.keras.layers.Dropout(0.2),  # Add dropout layer
+    # Convolution Layer 4
+    tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
+    tf.keras.layers.BatchNormalization(synchronized=True),
+    # Convolution Layer 5
+    tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
+    tf.keras.layers.BatchNormalization(synchronized=True),
+    tf.keras.layers.MaxPool2D(2,2),
+    tf.keras.layers.Dropout(0.2),  # Add dropout layer
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(512, activation='relu'),
+    tf.keras.layers.Dropout(0.25),  # Add dropout layer
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dropout(0.25),  # Add dropout layer
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dropout(0.25),  # Add dropout layer
+    tf.keras.layers.Dense(8, activation='relu'),    
+    tf.keras.layers.Dropout(0.25),  # Add dropout layer
+    tf.keras.layers.Dense(1, activation='sigmoid')
+])
